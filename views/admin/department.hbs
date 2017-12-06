@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>部门信息-日报后台管理系统</title>
+    <link rel='stylesheet' href='/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/css/adminStyle.css' />
+    <link rel='stylesheet' href='/css/pepper-grinder/jquery-ui-1.10.3.custom.min.css' />
+    <script type="text/javascript" src='/js/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src='/js/jquery-ui-1.10.3.custom.min.js'></script>
+    <script type="text/javascript" src='/js/bootstrap.min.js'></script>
+</head>
+<body class="admin-department">
+<header class="navbar">
+    <a class="brand" href="/" title="home page">日报管理系统</a>
+    <ul class="nav">
+        <li class="active"><a href="#">部门</a></li>
+        <li><a href="/admin/users">用户</a></li>
+        <li><a href="/admin/admingroup">权限</a></li>
+        <li ><a href="/logout">退出</a></li>
+    </ul>
+</header>
+<div id="dialog-confirm" title="删除部门" style="display:none">
+    <p>确认要删除该部门吗？</p>
+</div>
+<section id="department" class="container">
+    <div id="newDepartment" data-bind="css:{update: updateDepartment()}">
+        <div class="title"  data-bind="visible: !updateDepartment()"><i class="icon-book"></i><h2>创建新部门</h2> </div>
+        <div class="title"  data-bind="visible: updateDepartment()"><i class=" icon-edit"></i><h2>编辑部门</h2> </div>
+        <div data-bind="visible: !updateDepartment()">
+        <label for="departmentName">部门名称:<span data-bind="css:{errorTip: !validDepartmentName()}, visible: !validDepartmentName()">不能为空</span></label>
+        <input type="text" required="required" id="departmentName" data-bind="value:departmentName, valueUpdate:'keyup'"/></div>
+        <div data-bind="visible: updateDepartment()">
+            <label for="updateDepartmentName">部门名称:<span data-bind="css:{errorTip: !validUpdateDepartmentName()}, visible: !validUpdateDepartmentName()">不能为空</span></label>
+            <input type="text" required="required" id="updateDepartmentName" data-bind="value:updateDepartmentName, valueUpdate:'keyup'"/></div>
+
+        <label for="parentDepartment">上级部门:</label>
+        <select id="parentDepartment"
+                data-bind="options: departments, optionsText:'name',value:selectedParentDepartment, optionsCaption: '没有上级部门'"></select>
+        <div data-bind="visible: !updateDepartment()"><input id="createBtn" type="button" value="创建" class="btn btn-primary"
+                    data-bind="click:submit, enable: validDepartmentName() && validDepartmentRelation()" required="false"/></div>
+
+        <div data-bind="visible: updateDepartment()"><input id="updateBtn" type="button" value="更新" class="btn btn-primary"
+                    data-bind="enable: validUpdateDepartmentName() && validUpdateDepartmentRelation()" required="false"/>
+            <input id="cancelUpdateBtn" type="button" value="取消" class="btn btn-primary"
+                   data-bind="enable: validUpdateDepartmentName()" required="false"/></div>
+    </div>
+
+    <div id="departmentTree">
+
+    </div>
+</section>
+<script type="text/javascript" src='/js/knockout-2.2.1.js'></script>
+<script type="text/javascript" src='/js/TreeList.js'></script>
+<script type="text/javascript" src='/js/admin/DepartmentUserMode.js'></script>
+<script type="text/javascript" src='/js/admin/department.js'></script>
+</body>
+</html>

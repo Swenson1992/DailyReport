@@ -1,0 +1,12 @@
+header {
+  background-color: #FAFAFA;
+  background-image: -moz-linear-gradient(center top, #ffffff, #f2f2f2);
+  background-repeat: repeat-x;
+  border: 1px solid #D4D4D4;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+  min-height: 40px;
+  width: 100%;
+}
+header.navbar a.brand {
+  padding-left: 40px;
+}

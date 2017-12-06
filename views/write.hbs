@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>写日报</title>
+    <link rel='stylesheet' href='/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/css/reportStyle.css' />
+    <link rel='stylesheet' href='/css/pepper-grinder/jquery-ui-1.10.3.custom.min.css' />
+    <script type="text/javascript" src='/js/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src='/js/jquery-ui-1.10.3.custom.min.js'></script>
+    <script type="text/javascript" src='/js/bootstrap.min.js'></script>
+    <script type="text/javascript" src="/ueditor/editor_config.js"></script>
+    <script type="text/javascript" src="/ueditor/editor_all.js"></script>
+</head>
+<body class="writing">
+<header class="navbar">
+    <a class="brand" href="/" title="home page">日报管理系统</a>
+    <ul class="nav">
+        <li class="active"><a href="#">写日报</a></li>
+        <li ><a href="/show">我的日报</a></li>
+        {{#if hasSubordinate}}
+        <li ><a href="/showsubordinate">下属日报</a></li>
+        {{/if}}
+        <li ><a href="/password">修改密码</a></li>
+        {{#if isAdmin}}
+        <li ><a href="/admin">管理员控制台</a></li>
+        {{/if}}
+        {{#if isLoginUser}}
+        <li ><a href="/logout">退出</a></li>
+        {{/if}}
+    </ul>
+</header>
+<section class="container">
+    <div class="title"> <i class="icon-file"></i><h1>写日报</h1></div>
+    <article id="reportCreation">
+        <div><label for="dateTxt">日期:</label>
+            <input id="dateTxt" type="text" required="required"
+                   data-bind="value:dateTxt, valueUpdate:'keyup'"/></div>
+        <div>
+            <label for="content">日报内容:</label>
+            <textarea id="content" rows="6" cols="30"  required="required"
+                      placeholder="Here is your daily report..."></textarea></div>
+
+        <div><input id="reportSubmitBtn" type="button" value="发布" class="btn btn-primary"
+                    data-bind="enable:validDateTxt()"/></div>
+    </article>
+</section>
+
+<script type="text/javascript" src='/js/knockout-2.2.1.js'></script>
+<script type="text/javascript" src='/js/validator-min.js'></script>
+<script type="text/javascript" src='/js/ReportModel.js'></script>
+<script type="text/javascript" src='/js/writeReport.js'></script>
+</body>
+</html>

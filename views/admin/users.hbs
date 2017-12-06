@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>用户管理-日报后台管理</title>
+    <link rel='stylesheet' href='/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/css/pepper-grinder/jquery-ui-1.10.3.custom.min.css' />
+    <link rel='stylesheet' href='/css/adminStyle.css' />
+    <script type="text/javascript" src='/js/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src='/js/jquery-ui-1.10.3.custom.min.js'></script>
+    <script type="text/javascript" src='/js/bootstrap.min.js'></script>
+</head>
+<body class="admin-users">
+<header class="navbar">
+    <a class="brand" href="/" title="home page">日报管理系统</a>
+    <ul class="nav">
+        <li><a href="/admin">部门</a></li>
+        <li class="active"><a href="#">用户</a></li>
+        <li><a href="/admin/admingroup">权限</a></li>
+        <li ><a href="/logout">退出</a></li>
+    </ul>
+</header>
+<div id="dialog-confirm" title="删除用户" style="display:none">
+    <p>确认要删除该用户吗？</p>
+</div>
+<section id="users" class="container">
+  <div id="newUser"  data-bind="visible: !updateUser()">
+    <div class="title"><i class="icon-user"></i><h2>创建新用户</h2> </div>
+    <label for="userName">用户名:
+        <span data-bind="css:{errorTip: !validUserName()}, visible: !validUserName()">至少6个，最多25个字符</span>
+        <span data-bind="css:{errorTip: showHasUserTip()}, visible: showHasUserTip()">该用户名已经存在</span></label>
+    <input id="userName" type="text" required="required" name="userName"
+           data-bind="value: userName, valueUpdate:'keyup',event: {focusout: checkUserExit}" />
+    <br />
+    <label for="password">密码:
+        <span data-bind="css:{errorTip: !validPassword()}, visible: !validPassword()">至少7个，最多25个字符</span></label>
+    <input type="password" required="required" name="password" id="password"
+           data-bind="value:password, valueUpdate:'keyup'"/>
+    <label for="repassword">重复密码:
+        <span data-bind="css:{errorTip: !validRePassword()}, visible: !validRePassword()">两次输入的密码不一致</span></label>
+    <input type="password" required="required" name="repassword" id="repassword"
+           data-bind="value:repassword, valueUpdate:'keyup'"/>
+    <br/>
+        <label for="userDepartment">所属部门:<span data-bind="css:{errorTip: !selectedDepartment()}, visible: !selectedDepartment()">必须选择一个部门</span></label>
+         <select id="userDepartment" name="userDepartment1"
+                 data-bind="options: departments, optionsText:'name', value:selectedDepartment, optionsCaption: '选择所属部门...'"></select>
+        <label for="superior1">直接上级:</label>
+        <select id="superior1" name="superior1"
+                data-bind="options: superiors, optionsText:'name', value:selectedSuperior, optionsCaption: '选择直接上级...'"></select>
+    <div><input id="submitBtn" type="submit" value="提交" class="btn btn-primary"
+                data-bind="click:submit, enable: valid()" /></div>
+  </div>
+    <div id="updateUser" data-bind="visible: updateUser()">
+        <div class="title"><i class="icon-edit"></i><h2>更新用户信息</h2> </div>
+        <label for="userName1">用户名:
+            <span data-bind="css:{errorTip: !validUserName1()}, visible: !validUserName1()">至少6个，最多25个字符</span></label>
+        <input id="userName1" type="text" required="required" name="userName1"
+               data-bind="value: userName1, valueUpdate:'keyup'" />
+        <br />
+        <label for="password1">密码: 为空表示不修改原密码
+            <!-- <span data-bind="css:{errorTip: !validPassword1()}, visible: !validPassword1()">至少7个，最多25个字符</span>--></label>
+        <input type="password"  name="password1" id="password1"
+               data-bind="value:password1, valueUpdate:'keyup'"/>
+        <label for="repassword1">重复密码:
+            <span data-bind="css:{errorTip: !validRePassword1()}, visible: !validRePassword1()">两次输入的密码不一致</span></label>
+        <input type="password" name="repassword1" id="repassword1"
+               data-bind="value:repassword1, valueUpdate:'keyup'"/>
+        <br/>
+        <label for="userDepartment1">所属部门:<span data-bind="css:{errorTip: !selectedDepartment1()}, visible: !selectedDepartment1()">必须选择一个部门</span></label>
+        <select id="userDepartment1" name="userDepartment1"
+                data-bind="options: departments, optionsText:'name', value:selectedDepartment1, optionsCaption: '选择所属部门...'"></select>
+        <label for="superior">直接上级:</label>
+        <select id="superior" name="superior"
+                data-bind="options: superiors1, optionsText:'name', value:selectedSuperior1, optionsCaption: '选择直接上级...'"></select>
+        <div><input id="updateBtn" type="submit" value="更新" class="btn btn-primary"
+                    data-bind="enable: valid1()" />
+
+            <input id="cancelBtn" type="submit" value="取消" class="btn btn-primary"/></div>
+    </div>
+  <div id="usersTree"></div>
+</section>
+<script type="text/javascript" src='/js/knockout-2.2.1.js'></script>
+<script type="text/javascript" src='/js/TreeList.js'></script>
+<script type="text/javascript" src='/js/admin/DepartmentUserMode.js'></script>
+<script type="text/javascript" src='/js/admin/users.js'></script>
+</body>
+</html>

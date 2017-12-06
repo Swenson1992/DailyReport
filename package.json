@@ -1,0 +1,23 @@
+{
+  "name": "one-day-daily-report-software-tool",
+  "version": "0.9.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+      "express": "4.10.1",
+      "connect": "3.3.2",
+      "express-session": "1.9.1",
+      "body-parser": "1.9.2",
+      "method-override": "2.3.0",
+      "cookie-parser": "1.3.3",
+      "morgan": "1.4.1",
+      "errorhandler": "1.2.2",
+      "compression": "1.2.0",
+      "hbs": "2.7.0",
+      "redis": "0.12.1",
+      "connect-redis": "2.1.0",
+      "validator": "2.1.0"
+  }
+}

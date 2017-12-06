@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <title>管理员设置-日报后台管理系统</title>
+    <link rel='stylesheet' href='/css/bootstrap.min.css' />
+    <link rel='stylesheet' href='/css/adminStyle.css' />
+    <link rel='stylesheet' href='/css/pepper-grinder/jquery-ui-1.10.3.custom.min.css' />
+    <script type="text/javascript" src='/js/jquery-1.9.1.min.js'></script>
+    <script type="text/javascript" src='/js/jquery-ui-1.10.3.custom.min.js'></script>
+    <script type="text/javascript" src='/js/bootstrap.min.js'></script>
+</head>
+<body class="admin-admingroup">
+<header class="navbar">
+    <a class="brand" href="/" title="home page">日报管理系统</a>
+    <ul class="nav">
+        <li><a href="/admin">部门</a></li>
+        <li><a href="/admin/users">用户</a></li>
+        <li class="active"><a href="#">权限</a></li>
+        <li ><a href="/logout">退出</a></li>
+    </ul>
+</header>
+<div id="dialog-confirm" title="删除管理员" style="display:none">
+    <p>确认要删除该管理员吗？</p>
+</div>
+<section class="container">
+  <div id="newAdministrator">
+    <div class="title"><i class=" icon-user"></i><h2>添加管理员</h2> </div>
+      <label for="depar">部门成员:</label>
+      <select id="depar"
+              data-bind="options: departments, optionsText:'name',value:selectedDepartment, optionsCaption: '选择一个部门'"></select>
+    <label for="users">部门成员:</label>
+    <select id="users"
+            data-bind="options: users, optionsText:'name',value:selectedUser"></select>
+    <div><input id="submitBtn" type="button" value="提交" class="btn btn-primary" required="false"
+                data-bind="click:submit, enable: valid()"/></div>
+    </div>
+  </div>
+    <div id="adminlist">
+        <div class="title"><i class="icon-list"></i><h2>管理员列表</h2> </div>
+        <ul data-bind="foreach: admins" class="unstyle">
+            <li><span data-bind="text: name"></span><a href="#" class="delete" data-bind="attr:{userId: id}" title="删除管理员权限"><i class="icon-remove"></i></a></li>
+        </ul>
+    </div>
+</section>
+<script type="text/javascript" src='/js/knockout-2.2.1.js'></script>
+<script type="text/javascript" src='/js/admin/DepartmentUserMode.js'></script>
+<script type="text/javascript" src='/js/admin/admingroup.js'></script>
+</body>
+</html>
