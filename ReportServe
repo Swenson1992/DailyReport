@@ -1,2 +1,0 @@
-#nohup /opt/redis-stable/src/redis-server >/dev/null &
-nohup node /opt/WalterShe-dailyReport-e3fcff6/app.js >/dev/null &
