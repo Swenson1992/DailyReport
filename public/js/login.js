@@ -31,6 +31,10 @@
     self.valid = ko.computed(function() {
       return self.validUserName() && self.validPassword();
     });
+    self.clear = function() {
+      self.userName('');
+      self.password('');
+    };
     self.submit = function() {
       var data, result;
       self.showErrorTip(true);

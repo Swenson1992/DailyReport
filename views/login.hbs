@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>登陆日报管理系统</title>
+    <link rel="icon" href="/img/favicon.ico" />
+    <link rel="bookmark" href="/img/favicon.ico" />
     <link rel='stylesheet' href='/css/reportStyle.css' />
     <link rel='stylesheet' href='/css/bootstrap.min.css' />
     <script type="text/javascript" src='/js/jquery-1.9.1.min.js'></script>
@@ -22,9 +24,12 @@
         <label for="password">密码:</label>
         <input type="password" required="required" name="password" id="password"
                data-bind="value: password, valueUpdate:'keyup'"/>
-        <div>
+        <div style="float:left">
             <input id="submitBtn" type="submit" value="提交" class="btn btn-primary"
                data-bind="click: submit, enable:valid" /></div>
+        <div style="float:right">
+            <input id="resetBtn" type="reset" value="重置" class="btn btn-primary"
+               data-bind="click: clear" /></div>
     </section>
 </body>
 <script type="text/javascript" src='/js/knockout-2.2.1.js'></script>
