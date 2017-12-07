@@ -1,0 +1,8 @@
+title: Daily Report
+description: 日报系统官方主页
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-hacker
+
+gems:
+  - jekyll-mentions
