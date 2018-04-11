@@ -2,14 +2,14 @@
 (function() {
 
   exports.db = {
-    host: "60.205.205.170",
+    host: "10.211.55.6",
     port: 6379,
     db: 0,
     pass: '123456'
   };
 
   exports.sessiondb = {
-    host: "60.205.205.170",
+    host: "10.211.55.6",
     port: 6379,
     db: 1,
     pass: '123456'
